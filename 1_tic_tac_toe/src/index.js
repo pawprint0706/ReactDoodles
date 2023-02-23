@@ -27,7 +27,7 @@ class Board extends React.Component {
     const squares = this.state.squares.slice();
     squares[i] = 'X';
     this.setState({squares: squares});
-  }
+  } // 여기까지!
 
   renderSquare(i) {
     return (
