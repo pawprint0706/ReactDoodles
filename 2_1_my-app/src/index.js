@@ -15,7 +15,19 @@ import reportWebVitals from "./reportWebVitals";
 // chapter_08 - ConfirmButton
 // import ConfirmButton from "./chapter_08/ConfirmButton";
 // chapter_09 - LandingPage
-import LandingPage from "./chapter_09/LandingPage";
+// import LandingPage from "./chapter_09/LandingPage";
+// chapter_10 - AttendanceBook
+// import AttendanceBook from "./chapter_10/AttendanceBook";
+// chapter_11 - SignUp
+// import SignUp from "./chapter_11/SignUp";
+// chapter_12 - Calculator
+// import Calculator from "./chapter_12/Calculator";
+// chapter_13 - ProfileCard
+// import ProfileCard from "./chapter_13/ProfileCard";
+// chapter_14 - DarkOrLight
+// import DarkOrLight from "./chapter_14/DarkOrLight";
+// chapter_15 - Blocks
+import Blocks from "./chapter_15/Blocks";
 
 // ReactDOM
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -73,10 +85,58 @@ root.render(
   // </React.StrictMode>
 );
 */
+/*
 // chapter_09 - LandingPage
 root.render(
   // <React.StrictMode>
     <LandingPage />
+  // </React.StrictMode>
+);
+*/
+/*
+// chapter_10 - AttendanceBook
+root.render(
+  // <React.StrictMode>
+    <AttendanceBook />
+  // </React.StrictMode>
+);
+*/
+/*
+// chapter_11 - SignUp
+root.render(
+  // <React.StrictMode>
+    <SignUp />
+  // </React.StrictMode>
+);
+*/
+/*
+// chapter_12 - Calculator
+root.render(
+  // <React.StrictMode>
+    <Calculator />
+  // </React.StrictMode>
+);
+*/
+/*
+// chapter_13 - ProfileCard
+root.render(
+  // <React.StrictMode>
+    <ProfileCard />
+  // </React.StrictMode>
+);
+*/
+/*
+// chapter_14 - DarkOrLight
+root.render(
+  // <React.StrictMode>
+    <DarkOrLight />
+  // </React.StrictMode>
+);
+*/
+// chapter_15 - Blocks
+root.render(
+  // <React.StrictMode>
+    <Blocks />
   // </React.StrictMode>
 );
 
