@@ -1,3 +1,4 @@
+// store의 존재를 모르고 버튼으로 입력만 받는 presentation component
 import React, { useState } from 'react';
 
 function AddNumber(props) {

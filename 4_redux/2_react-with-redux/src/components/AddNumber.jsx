@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import store from '../store';
 
-function AddNumber(props) {
+function AddNumber() {
   const [size, setSize] = useState(1);
 
   return (
@@ -13,7 +14,8 @@ function AddNumber(props) {
       }></input>
       <input type="button" value="+" onClick={
         () => {
-          props.onClick(size);
+          store.dispatch({ type: 'INCREMENT', size: size });
+          // props 버블링을 통하는 것이 아닌 store에 직접적으로 값을 전달한다.
         }
       }></input>
     </div>

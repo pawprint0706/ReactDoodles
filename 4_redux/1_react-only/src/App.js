@@ -9,7 +9,11 @@ function App() {
   return (
     <div className="App">
       <h1>Root</h1>
-      <AddNumberRoot></AddNumberRoot>
+      <AddNumberRoot onClick={
+        (size) => {
+          setNumber(number + size);
+        }
+      }></AddNumberRoot>
       <DisplayNumberRoot number={number}></DisplayNumberRoot>
     </div>
   );
