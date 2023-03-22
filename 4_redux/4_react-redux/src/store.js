@@ -3,7 +3,7 @@ import { createStore } from 'redux';
 // Redux의 순서
 // dispatch(action) -> reducer(state, action) -> store(state)
 
-export default createStore((state, action) => {
+export default createStore(/* 익명함수가 reducer이다 */(state, action) => {
   if (state === undefined) {
     return { number: 0 }; // 초기값
   }
