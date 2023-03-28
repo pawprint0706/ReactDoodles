@@ -1,8 +1,0 @@
-div.App {
-  display: grid;
-  grid-template-rows: 50px calc(100vh - 80px) 30px;
-  place-content: center stretch;
-  margin: 0;
-  padding: 0;
-  border: 0;
-}

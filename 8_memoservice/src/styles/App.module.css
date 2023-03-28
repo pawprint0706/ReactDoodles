@@ -1,0 +1,14 @@
+.App {
+  display: grid;
+  grid-template-rows: 80px calc(100vh - 100px);
+  place-content: center stretch;
+  margin: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  background-image: url("../assets/background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+}

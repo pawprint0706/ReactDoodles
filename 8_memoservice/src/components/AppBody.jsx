@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 
-function AppBody() {
-  const Body = styled.div`
-    color: black;
-    background-color: green;
-  `;
+const Body = styled.div`
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: black;
+`;
 
+function AppBody() {
   return (
     <Body>Body</Body>
   );
