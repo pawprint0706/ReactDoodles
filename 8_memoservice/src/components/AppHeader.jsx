@@ -55,7 +55,6 @@ const HeaderInput = styled.input`
   font-size: 15px;
   font-family: 'Noto Sans KR', sans-serif;
   &:focus { outline: none; border-bottom: 1px solid #999999; }
-  &:hover { border-bottom: 1px solid #999999; }
 `;
 function MemoInput() {
   return (
@@ -63,10 +62,13 @@ function MemoInput() {
   );
 }
 const HeaderButton = styled.button`
-  margin: -2px 0 0 0;
+  display: block;
+  margin: 0;
   padding: 7px 0 0 0;
   border: 1px solid #dddddd;
   border-radius: 5px;
+  width: 40px;
+  height: 40px;
   outline: none;
   background-color: #ffffff;
   box-shadow: 0px 2px 3px 1px #dddddd;
