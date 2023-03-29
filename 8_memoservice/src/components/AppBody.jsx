@@ -1,9 +1,52 @@
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import GridLayout from 'react-grid-layout'; // 그리드 레이아웃 라이브러리
+import { WidthProvider, Responsive } from 'react-grid-layout'; // 그리드 레이아웃 라이브러리
 import '/node_modules/react-grid-layout/css/styles.css';
 import '/node_modules/react-resizable/css/styles.css';
 import { FiEdit3 } from 'react-icons/fi';
 import { FiTrash2 } from 'react-icons/fi';
+
+// 반응형 그리드 레이아웃
+const ResponsiveGridLayout = WidthProvider(Responsive);
+const CorkBoard = (props) => {
+  // Responsive Grid에 필요한 state
+  const [gridState, setGridState] = useState({
+    breakpoints: 'lg',
+    layouts: { lg: [] },
+  });
+  // Grid Layout 변경 시 사용
+  const onLayoutChange = (layout, layouts) => {
+    setGridState((state) => ({
+        ...state,
+        layouts: layouts,
+    }))
+  }
+  // breakpoint 변경
+  const onBreakPointChange = (breakpoint) => {
+    setGridState((state) => ({
+        ...state,
+        breakpoints: breakpoint,
+    }))
+  }
+  // breakpoints는 원하는 해상도에서 30px씩 빼고 생각하면 된다. (좌우 여백 + 스크롤바 너비)
+  // lg: 1920(표준 해상도), md: 1440(3/4 너비), sm: 960(1/2 너비), xs: 580(이하는 레이아웃이 깨짐)
+  return (
+    <ResponsiveGridLayout
+      className="layout"
+      layouts={gridState.layouts}
+      breakpoints={{ lg: 1890, md: 1410, sm: 930, xs: 550 }}
+      cols={{ lg: 8, md: 6, sm: 4, xs: 2 }}
+      width={1000}
+      rowHeight={200}
+      onLayoutChange={onLayoutChange}
+      onBreakpointChange={onBreakPointChange}
+      isResizable={true}
+      isBounded={true}
+    >
+      {props.children}
+    </ResponsiveGridLayout>
+  );
+};
 
 // 다른 컴포넌트를 감싸는 래퍼
 const WrapperScroll = styled.div`
@@ -78,7 +121,7 @@ const MemoContent = styled.div`
 `;
 function Memo(props) {
   function findMemo() {
-    const memo = memos.find(memo => memo.i === props.num);
+    const memo = memos.find((memo) => memo.i === props.num);
     return memo;
   }
 
@@ -96,26 +139,19 @@ function Memo(props) {
 // 메모 리스트
 const memos = [
   { i: '1', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '', content: '1 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다.' },
-  { i: '2', x: 1, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#9b93c9', content: '2 메모 테스트 입니다.' },
-  { i: '3', x: 0, y: 1, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#2baf65', content: '3 메모 테스트 입니다.' },
-  { i: '4', x: 1, y: 1, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#f0c7f9', content: '4 메모 테스트 입니다.' },
-  { i: '5', x: 2, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#93a04b', content: '5 메모 테스트 입니다.' },
-  { i: '6', x: 2, y: 1, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#d86c13', content: '6 메모 테스트 입니다.' },
-  { i: '7', x: 0, y: 2, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#84615e', content: '7 메모 테스트 입니다.' },
-  { i: '8', x: 1, y: 2, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#dde0db', content: '8 메모 테스트 입니다.' },
+  { i: '2', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#9b93c9', content: '2 메모 테스트 입니다.' },
+  { i: '3', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#2baf65', content: '3 메모 테스트 입니다.' },
+  { i: '4', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#f0c7f9', content: '4 메모 테스트 입니다.' },
+  { i: '5', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#93a04b', content: '5 메모 테스트 입니다.' },
+  { i: '6', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#d86c13', content: '6 메모 테스트 입니다.' },
+  { i: '7', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#84615e', content: '7 메모 테스트 입니다.' },
+  { i: '8', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#dde0db', content: '8 메모 테스트 입니다.' },
 ];
 
 function AppBody() {
   return (
     <WrapperScroll>
-      <GridLayout
-        className="layout"
-        layout={memos}
-        cols={10}
-        rowHeight={200}
-        width={1920}
-        isBounded={true}
-      >
+      <CorkBoard>
         <WrapperNoScroll key="1">
           <Memo num="1" />
         </WrapperNoScroll>
@@ -140,7 +176,7 @@ function AppBody() {
         <WrapperNoScroll key="8">
           <Memo num="8" />
         </WrapperNoScroll>
-      </GridLayout>
+      </CorkBoard>
     </WrapperScroll>
   );
 }
