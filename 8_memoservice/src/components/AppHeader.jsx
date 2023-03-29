@@ -9,7 +9,8 @@ import { RiLayout2Line } from 'react-icons/ri';
 // 헤더 컴포넌트
 const HeaderWrapper = styled.div`
   display: grid;
-  grid-template-columns: 40px max-content 1fr 40px 40px;
+  // grid-template-columns: 40px max-content 1fr 40px 40px;
+  grid-template-columns: ${props => props.isVisible ? '40px max-content 1fr 40px 40px' : '40px 1fr 40px'};
   place-content: center start;
   gap: 10px;
   overflow: hidden;
@@ -99,8 +100,6 @@ function ChangeLayoutButton() {
   );
 }
 function Header() {
-  // HeaderWrapper: grid-template-columns: 40px max-content 1fr 40px 40px;
-  // HeaderWrapper: grid-template-columns: 40px 1fr 40px;
   // 표시 여부를 나타내는 state
   const [visible, setVisible] = useState(true);
   // 리사이즈 이벤트를 감지하여 가로 길이에 따라 모바일 여부 결정
@@ -125,7 +124,7 @@ function Header() {
   }, []);
 
   return (
-    <HeaderWrapper>
+    <HeaderWrapper isVisible={visible}>
       <Logo />
       {visible && <Title>React Memo</Title>}
       <MemoInput />
