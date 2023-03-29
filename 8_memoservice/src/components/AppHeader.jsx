@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   place-content: center center;
   gap: 10px;
   margin: 10px;
+  margin-bottom: 3px; /* 하단은 GridLayout이 margin 10px 있어서 상단보다 margin을 줄임 */
   padding: 10px;
   border: 0;
   border-radius: 10px;
@@ -46,17 +47,22 @@ const Title = styled.div`
   font-family: 'Noto Sans KR', sans-serif;
   filter: drop-shadow(2px 2px 1px #bbbbbb);
 `;
-const MemoInput = styled.input`
+const HeaderInput = styled.input`
   margin: 1px 10px 0 10px;
   padding: 0 5px;
   border: 0;
   border-bottom: 1px solid #cccccc;
   font-size: 15px;
   font-family: 'Noto Sans KR', sans-serif;
-  &:focus { outline: none; border-bottom: 1px solid #aaaaaa; }
-  &:hover { border-bottom: 1px solid #aaaaaa; }
+  &:focus { outline: none; border-bottom: 1px solid #999999; }
+  &:hover { border-bottom: 1px solid #999999; }
 `;
-const AddButton = styled.button`
+function MemoInput() {
+  return (
+    <HeaderInput placeholder="메모를 입력해주세요..."></HeaderInput>
+  );
+}
+const HeaderButton = styled.button`
   margin: -2px 0 0 0;
   padding: 7px 0 0 0;
   border: 1px solid #dddddd;
@@ -73,32 +79,25 @@ const AddButton = styled.button`
   font-size: 24px;
   color: #777777;
 `;
-const LayoutButton = styled.button`
-  margin: -2px 0 0 0;
-  padding: 7px 0 0 0;
-  border: 1px solid #dddddd;
-  border-radius: 5px;
-  outline: none;
-  background-color: #ffffff;
-  box-shadow: 0px 2px 3px 1px #dddddd;
-  transition: all 0.1s ease-in-out;
-  &:hover { cursor: pointer; }
-  &:active {
-    transform: translateY(2px);
-    box-shadow: none;
-  }
-  font-size: 24px;
-  color: #777777;
-`;
+function AddMemoButton() {
+  return (
+    <HeaderButton title="메모 추가"><RiAddBoxLine /></HeaderButton>
+  );
+}
+function ChangeLayoutButton() {
+  return (
+    <HeaderButton title="레이아웃 변경"><RiLayout2Line /></HeaderButton>
+  );
+}
 
 function AppHeader() {
     return (
     <Wrapper>
       <Logo />
-      <Title>React 메모 프로젝트</Title>
-      <MemoInput placeholder="메모를 입력해주세요..."></MemoInput>
-      <AddButton><RiAddBoxLine /></AddButton>
-      <LayoutButton><RiLayout2Line /></LayoutButton>
+      <Title>React Memo</Title>
+      <MemoInput />
+      <AddMemoButton />
+      <ChangeLayoutButton />
     </Wrapper>
   );
 }

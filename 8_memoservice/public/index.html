@@ -18,9 +18,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
     <!-- title -->
     <title>메모</title>
+    <style>
+      /* 스크롤바 숨기기 */
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        /* IE, Edge */
+        scrollbar-width: none;
+        /* Firefox */
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+        /* Chrome, Safari, Opera */
+      }
+      /* 커스텀 스크롤바 */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #ccccccc8;
+        border-radius: 100px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #bbbbbbff;
+        border-radius: 100px;
+      }
+    </style>
   </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+  <body class="no-scrollbar">
+    <noscript>이 앱을 실행하려면 JavaScript를 활성화해야 합니다.</noscript>
     <div id="root"></div>
   </body>
 </html>

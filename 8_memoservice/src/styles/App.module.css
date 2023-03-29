@@ -1,7 +1,8 @@
 .App {
   display: grid;
-  grid-template-rows: 80px calc(100vh - 100px);
-  place-content: center stretch;
+  grid-template-rows: 73px calc(100vh - 93px); /* 배경여백(10px + 10px) + 헤더높이(60px) + 헤더여백(10px + 3px) */
+  place-content: stretch stretch;
+  overflow: hidden;
   margin: 10px;
   padding: 0;
   border: 0;
@@ -9,6 +10,5 @@
   background-image: url("../assets/background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
 }
