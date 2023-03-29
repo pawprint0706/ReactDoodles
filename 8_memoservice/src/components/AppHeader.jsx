@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'; // CSS in JS 기법으로 스타일을 작성할 수 있도록 도와주는 라이브러리
 // 컴포넌트 단위 개발에서는 CSS, HTML, JS를 통합하는 방향으로 가는 것이 재사용 및 유지보수에 유리하다.
 import assets_logo from '../assets/logo.png'; // 이미지도 하나의 모듈로 import하여야 한다.
@@ -5,11 +6,13 @@ import { RiAddBoxLine } from 'react-icons/ri'; // 아이콘 라이브러리 (아
 import { RiLayout2Line } from 'react-icons/ri';
 
 // styled-components는 컴포넌트 밖에서 선언해야 한다.
-const Wrapper = styled.div`
+// 헤더 컴포넌트
+const HeaderWrapper = styled.div`
   display: grid;
   grid-template-columns: 40px max-content 1fr 40px 40px;
-  place-content: center center;
+  place-content: center start;
   gap: 10px;
+  overflow: hidden;
   margin: 10px;
   margin-bottom: 3px; /* 하단은 GridLayout이 margin 10px 있어서 상단보다 margin을 줄임 */
   padding: 10px;
@@ -25,6 +28,7 @@ const Wrapper = styled.div`
 const Logo = styled.div`
   display: grid;
   place-content: stretch stretch;
+  overflow: hidden;
   margin: 1px 0 0 0;
   padding: 0;
   border: 0;
@@ -39,6 +43,7 @@ const Logo = styled.div`
 const Title = styled.div`
   display: grid;
   place-content: center center;
+  overflow: hidden;
   margin: 0;
   padding: 0;
   border: 0;
@@ -48,6 +53,8 @@ const Title = styled.div`
   filter: drop-shadow(2px 2px 1px #bbbbbb);
 `;
 const HeaderInput = styled.input`
+  display: block;
+  overflow: hidden;
   margin: 1px 10px 0 10px;
   padding: 0 5px;
   border: 0;
@@ -58,7 +65,7 @@ const HeaderInput = styled.input`
 `;
 function MemoInput() {
   return (
-    <HeaderInput placeholder="메모를 입력해주세요..."></HeaderInput>
+    <HeaderInput placeholder="내용을 입력해주세요"></HeaderInput>
   );
 }
 const HeaderButton = styled.button`
@@ -91,16 +98,46 @@ function ChangeLayoutButton() {
     <HeaderButton title="레이아웃 변경"><RiLayout2Line /></HeaderButton>
   );
 }
+function Header() {
+  // HeaderWrapper: grid-template-columns: 40px max-content 1fr 40px 40px;
+  // HeaderWrapper: grid-template-columns: 40px 1fr 40px;
+  // 표시 여부를 나타내는 state
+  const [visible, setVisible] = useState(true);
+  // 리사이즈 이벤트를 감지하여 가로 길이에 따라 모바일 여부 결정
+  const resizingHandler = () => {
+    if (window.innerWidth <= 480) {
+      setVisible(false);
+    } else {
+      setVisible(true);
+    }
+  };
+  // 우선 맨 처음 로딩 시 너비가 480이하면 모바일 처리
+  useEffect(() => {
+    if (window.innerWidth <= 480) {
+      setVisible(false);
+    }
+    // 윈도우 사이즈 변화를 감지하는 이벤트리스너 추가
+    window.addEventListener("resize", resizingHandler);
+    return () => {
+      // 메모리 누수를 줄이기 위해 이벤트리스너 제거
+      window.removeEventListener("resize", resizingHandler);
+    };
+  }, []);
 
-function AppHeader() {
-    return (
-    <Wrapper>
+  return (
+    <HeaderWrapper>
       <Logo />
-      <Title>React Memo</Title>
+      {visible && <Title>React Memo</Title>}
       <MemoInput />
       <AddMemoButton />
-      <ChangeLayoutButton />
-    </Wrapper>
+      {visible && <ChangeLayoutButton />}
+    </HeaderWrapper>
+  );
+}
+
+function AppHeader() {
+  return (
+    <Header />
   );
 }
 

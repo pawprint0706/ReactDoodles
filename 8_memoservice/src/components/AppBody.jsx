@@ -29,14 +29,14 @@ const CorkBoard = (props) => {
     }))
   }
   // breakpoints는 원하는 해상도에서 30px씩 빼고 생각하면 된다. (좌우 여백 + 스크롤바 너비)
-  // lg: 1920(표준 해상도), md: 1440(3/4 너비), sm: 960(1/2 너비), xs: 580(이하는 레이아웃이 깨짐)
+  // lg: 1920(표준 해상도), md: 1440(3/4 너비), sm: 960(1/2 너비), xs: 480(1/4 너비), xxs: 0(모바일)
   return (
     <ResponsiveGridLayout
       className="layout"
       layouts={gridState.layouts}
-      breakpoints={{ lg: 1890, md: 1410, sm: 930, xs: 550 }}
-      cols={{ lg: 8, md: 6, sm: 4, xs: 2 }}
-      width={1000}
+      breakpoints={{ lg: 1890, md: 1410, sm: 930, xs: 450, xxs: 0 }}
+      cols={{ lg: 8, md: 6, sm: 4, xs: 2, xxs: 1 }}
+      width={1920}
       rowHeight={200}
       onLayoutChange={onLayoutChange}
       onBreakpointChange={onBreakPointChange}
