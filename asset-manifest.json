@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/reactmemo/static/css/main.d3d2f5d1.css",
-    "main.js": "/reactmemo/static/js/main.32505ed6.js",
-    "static/media/background.jpg": "/reactmemo/static/media/background.dbd0d0f9347ca559b281.jpg",
-    "index.html": "/reactmemo/index.html",
-    "main.d3d2f5d1.css.map": "/reactmemo/static/css/main.d3d2f5d1.css.map",
-    "main.32505ed6.js.map": "/reactmemo/static/js/main.32505ed6.js.map"
+    "main.css": "/8_memoservice/static/css/main.5d268ba7.css",
+    "main.js": "/8_memoservice/static/js/main.e9b40246.js",
+    "static/media/background.jpg": "/8_memoservice/static/media/background.dbd0d0f9347ca559b281.jpg",
+    "index.html": "/8_memoservice/index.html",
+    "main.5d268ba7.css.map": "/8_memoservice/static/css/main.5d268ba7.css.map",
+    "main.e9b40246.js.map": "/8_memoservice/static/js/main.e9b40246.js.map"
   },
   "entrypoints": [
-    "static/css/main.d3d2f5d1.css",
-    "static/js/main.32505ed6.js"
+    "static/css/main.5d268ba7.css",
+    "static/js/main.e9b40246.js"
   ]
 }
