@@ -1,14 +1,13 @@
 {
   "files": {
-    "main.css": "/ReactDoodles/static/css/main.94eb4c41.css",
-    "main.js": "/ReactDoodles/static/js/main.efbb166d.js",
-    "static/media/background.jpg": "/ReactDoodles/static/media/background.dbd0d0f9347ca559b281.jpg",
+    "main.css": "/ReactDoodles/static/css/main.7889b5f8.css",
+    "main.js": "/ReactDoodles/static/js/main.3cdb1f70.js",
     "index.html": "/ReactDoodles/index.html",
-    "main.94eb4c41.css.map": "/ReactDoodles/static/css/main.94eb4c41.css.map",
-    "main.efbb166d.js.map": "/ReactDoodles/static/js/main.efbb166d.js.map"
+    "main.7889b5f8.css.map": "/ReactDoodles/static/css/main.7889b5f8.css.map",
+    "main.3cdb1f70.js.map": "/ReactDoodles/static/js/main.3cdb1f70.js.map"
   },
   "entrypoints": [
-    "static/css/main.94eb4c41.css",
-    "static/js/main.efbb166d.js"
+    "static/css/main.7889b5f8.css",
+    "static/js/main.3cdb1f70.js"
   ]
 }
