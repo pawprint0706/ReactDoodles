@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/8_memoservice/static/css/main.5d268ba7.css",
-    "main.js": "/8_memoservice/static/js/main.e9b40246.js",
-    "static/media/background.jpg": "/8_memoservice/static/media/background.dbd0d0f9347ca559b281.jpg",
-    "index.html": "/8_memoservice/index.html",
-    "main.5d268ba7.css.map": "/8_memoservice/static/css/main.5d268ba7.css.map",
-    "main.e9b40246.js.map": "/8_memoservice/static/js/main.e9b40246.js.map"
+    "main.css": "/ReactDoodles/static/css/main.94eb4c41.css",
+    "main.js": "/ReactDoodles/static/js/main.efbb166d.js",
+    "static/media/background.jpg": "/ReactDoodles/static/media/background.dbd0d0f9347ca559b281.jpg",
+    "index.html": "/ReactDoodles/index.html",
+    "main.94eb4c41.css.map": "/ReactDoodles/static/css/main.94eb4c41.css.map",
+    "main.efbb166d.js.map": "/ReactDoodles/static/js/main.efbb166d.js.map"
   },
   "entrypoints": [
-    "static/css/main.5d268ba7.css",
-    "static/js/main.e9b40246.js"
+    "static/css/main.94eb4c41.css",
+    "static/js/main.efbb166d.js"
   ]
 }
