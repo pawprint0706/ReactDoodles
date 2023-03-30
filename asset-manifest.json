@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/reactmemo/static/css/main.d3d2f5d1.css",
+    "main.js": "/reactmemo/static/js/main.32505ed6.js",
+    "static/media/background.jpg": "/reactmemo/static/media/background.dbd0d0f9347ca559b281.jpg",
+    "index.html": "/reactmemo/index.html",
+    "main.d3d2f5d1.css.map": "/reactmemo/static/css/main.d3d2f5d1.css.map",
+    "main.32505ed6.js.map": "/reactmemo/static/js/main.32505ed6.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d3d2f5d1.css",
+    "static/js/main.32505ed6.js"
+  ]
+}
