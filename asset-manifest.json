@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/ReactDoodles/8_memoservice/static/css/main.4ca7163f.css",
-    "main.js": "/ReactDoodles/8_memoservice/static/js/main.6c7e5b4b.js",
-    "static/media/background.jpg": "/ReactDoodles/8_memoservice/static/media/background.dbd0d0f9347ca559b281.jpg",
-    "index.html": "/ReactDoodles/8_memoservice/index.html",
-    "main.4ca7163f.css.map": "/ReactDoodles/8_memoservice/static/css/main.4ca7163f.css.map",
-    "main.6c7e5b4b.js.map": "/ReactDoodles/8_memoservice/static/js/main.6c7e5b4b.js.map"
+    "main.css": "/8_memoservice/static/css/main.5d268ba7.css",
+    "main.js": "/8_memoservice/static/js/main.e9b40246.js",
+    "static/media/background.jpg": "/8_memoservice/static/media/background.dbd0d0f9347ca559b281.jpg",
+    "index.html": "/8_memoservice/index.html",
+    "main.5d268ba7.css.map": "/8_memoservice/static/css/main.5d268ba7.css.map",
+    "main.e9b40246.js.map": "/8_memoservice/static/js/main.e9b40246.js.map"
   },
   "entrypoints": [
-    "static/css/main.4ca7163f.css",
-    "static/js/main.6c7e5b4b.js"
+    "static/css/main.5d268ba7.css",
+    "static/js/main.e9b40246.js"
   ]
 }
