@@ -6,7 +6,19 @@ import '/node_modules/react-resizable/css/styles.css';
 import { FiEdit3 } from 'react-icons/fi';
 import { FiTrash2 } from 'react-icons/fi';
 
-// 반응형 그리드 레이아웃
+/* 메모 리스트 */
+const memos = [
+  { i: '1', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '', content: '1 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다.' },
+  { i: '2', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#9b93c9', content: '2 메모 테스트 입니다.' },
+  { i: '3', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#2baf65', content: '3 메모 테스트 입니다.' },
+  { i: '4', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#f0c7f9', content: '4 메모 테스트 입니다.' },
+  { i: '5', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#93a04b', content: '5 메모 테스트 입니다.' },
+  { i: '6', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#d86c13', content: '6 메모 테스트 입니다.' },
+  { i: '7', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#84615e', content: '7 메모 테스트 입니다.' },
+  { i: '8', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#dde0db', content: '8 메모 테스트 입니다.' },
+];
+
+/* 반응형 그리드 레이아웃 */
 const ResponsiveGridLayout = WidthProvider(Responsive);
 const CorkBoard = (props) => {
   // Responsive Grid에 필요한 state
@@ -48,7 +60,7 @@ const CorkBoard = (props) => {
   );
 };
 
-// 다른 컴포넌트를 감싸는 래퍼
+/* 다른 컴포넌트를 감싸는 래퍼 컴포넌트 */
 const WrapperScroll = styled.div`
   display: grid;
   place-content: stretch stretch;
@@ -66,7 +78,8 @@ const WrapperNoScroll = styled.div`
   padding: 0;
   border: 0;
 `;
-// 메모 컴포넌트
+
+/* 메모 컴포넌트 */
 const MemoWrapper = styled.div`
   display: grid;
   grid-template-rows: 28px 1fr;
@@ -136,19 +149,10 @@ function Memo(props) {
   );
 }
 
-// 메모 리스트
-const memos = [
-  { i: '1', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '', content: '1 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다.' },
-  { i: '2', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#9b93c9', content: '2 메모 테스트 입니다.' },
-  { i: '3', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#2baf65', content: '3 메모 테스트 입니다.' },
-  { i: '4', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#f0c7f9', content: '4 메모 테스트 입니다.' },
-  { i: '5', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#93a04b', content: '5 메모 테스트 입니다.' },
-  { i: '6', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#d86c13', content: '6 메모 테스트 입니다.' },
-  { i: '7', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#84615e', content: '7 메모 테스트 입니다.' },
-  { i: '8', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#dde0db', content: '8 메모 테스트 입니다.' },
-];
-
-function AppBody() {
+/* AppBody 컴포넌트 */
+function AppBody(props) {
+  // props.isMobile: 모바일 여부
+  
   return (
     <WrapperScroll>
       <CorkBoard>

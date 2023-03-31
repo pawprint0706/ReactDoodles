@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'; // CSS in JS 기법으로 스타일을 작성할 수 있도록 도와주는 라이브러리
 // 컴포넌트 단위 개발에서는 CSS, HTML, JS를 통합하는 방향으로 가는 것이 재사용 및 유지보수에 유리하다.
 import assets_logo from '../assets/logo.png'; // 이미지도 하나의 모듈로 import하여야 한다.
@@ -9,8 +8,7 @@ import { RiLayout2Line } from 'react-icons/ri';
 // 헤더 컴포넌트
 const HeaderWrapper = styled.div`
   display: grid;
-  // grid-template-columns: 40px max-content 1fr 40px 40px;
-  grid-template-columns: ${props => props.isVisible ? '40px max-content 1fr 40px 40px' : '40px 1fr 40px'};
+  grid-template-columns: ${props => props.isMobile ? '40px 1fr 40px' : '40px max-content 1fr 40px 40px'};
   place-content: center start;
   gap: 10px;
   overflow: hidden;
@@ -99,44 +97,21 @@ function ChangeLayoutButton() {
     <HeaderButton title="레이아웃 변경"><RiLayout2Line /></HeaderButton>
   );
 }
-function Header() {
-  // 표시 여부를 나타내는 state
-  const [visible, setVisible] = useState(true);
-  // 리사이즈 이벤트를 감지하여 가로 길이에 따라 모바일 여부 결정
-  const resizingHandler = () => {
-    if (window.innerWidth <= 480) {
-      setVisible(false);
-    } else {
-      setVisible(true);
-    }
-  };
-  // 우선 맨 처음 로딩 시 너비가 480이하면 모바일 처리
-  useEffect(() => {
-    if (window.innerWidth <= 480) {
-      setVisible(false);
-    }
-    // 윈도우 사이즈 변화를 감지하는 이벤트리스너 추가
-    window.addEventListener("resize", resizingHandler);
-    return () => {
-      // 메모리 누수를 줄이기 위해 이벤트리스너 제거
-      window.removeEventListener("resize", resizingHandler);
-    };
-  }, []);
-
+function Header(props) {
   return (
-    <HeaderWrapper isVisible={visible}>
+    <HeaderWrapper isMobile={props.isMobile}>
       <Logo />
-      {visible && <Title>React Memo</Title>}
+      {!props.isMobile && <Title>React Memo</Title>}
       <MemoInput />
       <AddMemoButton />
-      {visible && <ChangeLayoutButton />}
+      {!props.isMobile && <ChangeLayoutButton />}
     </HeaderWrapper>
   );
 }
 
-function AppHeader() {
+function AppHeader(props) {
   return (
-    <Header />
+    <Header isMobile={props.isMobile}/>
   );
 }
 
