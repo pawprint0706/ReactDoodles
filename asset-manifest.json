@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/ReactDoodles/static/css/main.94eb4c41.css",
-    "main.js": "/ReactDoodles/static/js/main.efbb166d.js",
+    "main.js": "/ReactDoodles/static/js/main.cd6654ae.js",
     "static/media/background.jpg": "/ReactDoodles/static/media/background.dbd0d0f9347ca559b281.jpg",
     "index.html": "/ReactDoodles/index.html",
     "main.94eb4c41.css.map": "/ReactDoodles/static/css/main.94eb4c41.css.map",
-    "main.efbb166d.js.map": "/ReactDoodles/static/js/main.efbb166d.js.map"
+    "main.cd6654ae.js.map": "/ReactDoodles/static/js/main.cd6654ae.js.map"
   },
   "entrypoints": [
     "static/css/main.94eb4c41.css",
-    "static/js/main.efbb166d.js"
+    "static/js/main.cd6654ae.js"
   ]
 }
