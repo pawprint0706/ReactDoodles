@@ -92,7 +92,7 @@ function Memo(props) {
 
 /* 반응형 그리드 레이아웃 */
 const ResponsiveGridLayout = WidthProvider(Responsive);
-const CorkBoard = () => {
+function CorkBoard(props) {
   // Responsive Grid에 필요한 state
   const [gridState, setGridState] = useState({
     breakpoints: 'lg',
@@ -134,16 +134,14 @@ const CorkBoard = () => {
       isBounded={true}
     >
       {
-        gridState.layouts[gridState.breakpoints].map(function(memo) {
-        console.log(gridState.breakpoints);
-        console.log(gridState.layouts[gridState.breakpoints]);
-        
-        return (
-          <WrapperNoScroll key={memo.i}>
-            <Memo bgColor={memo.bgColor} content={memo.content} />
-          </WrapperNoScroll>
-        );
-      })}
+        props.memos.map(function(memo) {
+          return (
+            <WrapperNoScroll key={memo.uuid}>
+              <Memo bgColor={memo.bgColor} content={memo.content} />
+            </WrapperNoScroll>
+          );
+        })
+      }
     </ResponsiveGridLayout>
   );
 };
@@ -157,7 +155,7 @@ const CorkBoard = () => {
 function AppBody(props) {
   return (
     <WrapperScroll className={"no-scrollbar"}>
-      <CorkBoard isMobile={props.isMobile}/>
+      <CorkBoard isMobile={props.isMobile} memos={props.memos} />
     </WrapperScroll>
   );
 }

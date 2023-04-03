@@ -5,8 +5,12 @@ import AppBody from './components/AppBody';
 import { v4 } from 'uuid';
 
 /* 메모 데이터 */
-// { uuid: 'uuid', bgColor: '#9b93c9', content: '메모 내용' }
-const memos = [];
+// { uuid: 'uuid', bgColor: '#fff0a6', content: '메모 내용' }
+const memos = [
+  { uuid: 'test1', bgColor: '#fff0a6', content: 'test1' },
+  { uuid: 'test2', bgColor: '#fff0a6', content: 'test2' },
+  { uuid: 'test3', bgColor: '#fff0a6', content: 'test3' },
+];
 
 function App() {
   // 모바일 해상도를 감지하는 state
@@ -58,7 +62,7 @@ function App() {
   return (
     <div className={appStyle.App}>
       <AppHeader isMobile={mobile} inputValue={inputValue} inputChange={inputChange} addBtnClick={addBtnClick} chgLayoutBtnClick={chgLayoutBtnClick} />
-      <AppBody isMobile={mobile} />
+      <AppBody isMobile={mobile} memos={memos} />
     </div>
   );
 }
