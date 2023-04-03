@@ -3,6 +3,7 @@ import styled from 'styled-components'; // CSS in JS 기법으로 스타일을 �
 import assets_logo from '../assets/logo.png'; // 이미지도 하나의 모듈로 import하여야 한다.
 import { RiAddBoxLine } from 'react-icons/ri'; // 아이콘 라이브러리 (아이콘 개별로 import한다.)
 import { RiLayout2Line } from 'react-icons/ri';
+import { useSelector, useDispatch } from 'react-redux';
 
 // styled-components는 컴포넌트 밖에서 선언해야 한다.
 // 헤더 컴포넌트
@@ -62,15 +63,30 @@ const HeaderInput = styled.input`
   font-family: 'Noto Sans KR', sans-serif;
   &:focus { outline: none; border-bottom: 1px solid #999999; }
 `;
-function MemoInput(props) {
+function MemoInput() {
+  const dispatch = useDispatch();
+  const inputValue = useSelector(state => state.inputValue);
+  function onChange(event) {
+    dispatch({ type: 'CHANGE_INPUT', inputValue: event.target.value });
+  }
+  function addBtnClick() {
+    if (inputValue !== '') {
+      // 메모 데이터 추가
+      dispatch({ type: 'ADD_MEMO' });
+      // 입력창 초기화
+      dispatch({ type: 'CHANGE_INPUT', inputValue: '' });
+    } else {
+      alert('내용을 입력해주세요');
+    }
+  };
   function onKeyDown(event) {
     if (event.key === 'Enter') {
-      props.addBtnClick();
+      addBtnClick();
     }
   }
 
   return (
-    <HeaderInput placeholder="내용을 입력해주세요" value={props.inputValue} onChange={props.onChange} onKeyDown={(event) => onKeyDown(event)}></HeaderInput>
+    <HeaderInput placeholder="내용을 입력해주세요" value={inputValue} onChange={(event) => onChange(event)} onKeyDown={(event) => onKeyDown(event)}></HeaderInput>
   );
 }
 const HeaderButton = styled.button`
@@ -93,9 +109,22 @@ const HeaderButton = styled.button`
   font-size: 24px;
   color: #777777;
 `;
-function AddMemoButton(props) {
+function AddMemoButton() {
+  const dispatch = useDispatch();
+  const inputValue = useSelector(state => state.inputValue);
+  function addBtnClick() {
+    if (inputValue !== '') {
+      // 메모 데이터 추가
+      dispatch({ type: 'ADD_MEMO' });
+      // 입력창 초기화
+      dispatch({ type: 'CHANGE_INPUT', inputValue: '' });
+    } else {
+      alert('내용을 입력해주세요');
+    }
+  };
+
   return (
-    <HeaderButton title="메모 추가" onClick={props.onClick}><RiAddBoxLine /></HeaderButton>
+    <HeaderButton title="메모 추가" onClick={addBtnClick}><RiAddBoxLine /></HeaderButton>
   );
 }
 function ChangeLayoutButton(props) {
@@ -105,11 +134,11 @@ function ChangeLayoutButton(props) {
 }
 function Header(props) {
   return (
-    <HeaderWrapper isMobile={props.isMobile} inputValue={props.inputValue} inputChange={props.inputChange} addBtnClick={props.addBtnClick} chgLayoutBtnClick={props.chgLayoutBtnClick}>
+    <HeaderWrapper isMobile={props.isMobile} chgLayoutBtnClick={props.chgLayoutBtnClick}>
       <Logo />
       {!props.isMobile && <Title>React Memo</Title>}
-      <MemoInput inputValue={props.inputValue} onChange={props.inputChange} addBtnClick={props.addBtnClick} />
-      <AddMemoButton onClick={props.addBtnClick} />
+      <MemoInput />
+      <AddMemoButton />
       {!props.isMobile && <ChangeLayoutButton onClick={props.chgLayoutBtnClick} />}
     </HeaderWrapper>
   );
@@ -117,7 +146,7 @@ function Header(props) {
 
 function AppHeader(props) {
   return (
-    <Header isMobile={props.isMobile} inputValue={props.inputValue} inputChange={props.inputChange} addBtnClick={props.addBtnClick} chgLayoutBtnClick={props.chgLayoutBtnClick} />
+    <Header isMobile={props.isMobile} chgLayoutBtnClick={props.chgLayoutBtnClick} />
   );
 }
 

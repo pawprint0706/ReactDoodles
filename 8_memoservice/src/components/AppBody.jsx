@@ -5,6 +5,7 @@ import '/node_modules/react-grid-layout/css/styles.css';
 import '/node_modules/react-resizable/css/styles.css';
 import { FiEdit3 } from 'react-icons/fi';
 import { FiTrash2 } from 'react-icons/fi';
+import { useSelector } from 'react-redux';
 
 /* 다른 컴포넌트를 감싸는 래퍼 컴포넌트 */
 const WrapperScroll = styled.div`
@@ -92,7 +93,9 @@ function Memo(props) {
 
 /* 반응형 그리드 레이아웃 */
 const ResponsiveGridLayout = WidthProvider(Responsive);
-function CorkBoard(props) {
+function CorkBoard() {
+  // Redux Store에서 메모 목록 가져오기
+  const memos = useSelector(state => state.memos);
   // Responsive Grid에 필요한 state
   const [gridState, setGridState] = useState({
     breakpoints: 'lg',
@@ -134,7 +137,7 @@ function CorkBoard(props) {
       isBounded={true}
     >
       {
-        props.memos.map(function(memo) {
+        memos.map(function(memo) {
           return (
             <WrapperNoScroll key={memo.uuid}>
               <Memo bgColor={memo.bgColor} content={memo.content} />
@@ -147,10 +150,10 @@ function CorkBoard(props) {
 };
 
 /* AppBody 컴포넌트 */
-function AppBody(props) {
+function AppBody() {
   return (
     <WrapperScroll className={"no-scrollbar"}>
-      <CorkBoard isMobile={props.isMobile} memos={props.memos} />
+      <CorkBoard />
     </WrapperScroll>
   );
 }
