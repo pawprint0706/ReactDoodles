@@ -146,11 +146,6 @@ function CorkBoard(props) {
   );
 };
 
-// gridState.layouts[gridState.breakpoints]
-// <WrapperNoScroll key={memo.i}>
-//   <Memo bgColor={memo.bgColor} content={memo.content} />
-// </WrapperNoScroll>
-
 /* AppBody 컴포넌트 */
 function AppBody(props) {
   return (

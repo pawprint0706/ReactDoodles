@@ -4,15 +4,15 @@ import AppHeader from './components/AppHeader';
 import AppBody from './components/AppBody';
 import { v4 } from 'uuid';
 
-/* 메모 데이터 */
-// { uuid: 'uuid', bgColor: '#fff0a6', content: '메모 내용' }
-const memos = [
-  { uuid: 'test1', bgColor: '#fff0a6', content: 'test1' },
-  { uuid: 'test2', bgColor: '#fff0a6', content: 'test2' },
-  { uuid: 'test3', bgColor: '#fff0a6', content: 'test3' },
-];
-
 function App() {
+  // 메모 데이터를 저장하는 state
+  // { uuid: 'uuid', bgColor: '#fff0a6', content: '메모 내용' }
+  const [ memos, setMemos ] = useState([
+    { uuid: 'test1', bgColor: '#fff0a6', content: 'test1' },
+    { uuid: 'test2', bgColor: '#fff0a6', content: 'test2' },
+    { uuid: 'test3', bgColor: '#fff0a6', content: 'test3' },
+  ]);
+
   // 모바일 해상도를 감지하는 state
   const [mobile, setMobile] = useState(false);
   // 리사이즈 이벤트를 감지하여 가로 길이에 따라 모바일 여부 결정
@@ -45,11 +45,9 @@ function App() {
   const addBtnClick = () => {
     if (inputValue !== '') {
       // 메모 데이터 추가
-      memos.push({ uuid: v4(), bgColor: '#fff0a6', content: inputValue });
+      setMemos([...memos, { uuid: v4(), bgColor: '#fff0a6', content: inputValue }]);
       // 입력창 초기화
       setInputValue('');
-      // 디버깅
-      console.log(memos);
     } else {
       alert('내용을 입력해주세요');
     }
