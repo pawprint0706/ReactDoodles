@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import { createStore } from 'redux';
+// import { createStore } from 'redux'; // createStore 함수는 deprecated 되었다.
+import { configureStore } from '@reduxjs/toolkit';
 import { Provider, useSelector, useDispatch/*, connect*/ } from 'react-redux';
 // connect 없이 useSelector, useDispatch를 사용하여 구현
 // connect는 컴포넌트를 presentation component / container component로 분리하여 재사용을 용이하게 할 때 유용하고
@@ -16,7 +17,11 @@ function reducer(currentState, action) {
   }
   return newState;
 }
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+//const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = configureStore({
+  reducer: reducer,
+  devTools: process.env.NODE_ENV !== 'production', // production 환경에서는 Redux DevTools 사용하지 않도록 설정
+});
 
 export default function App() {
   return (

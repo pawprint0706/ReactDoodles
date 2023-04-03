@@ -2,17 +2,46 @@ import React, { useState, useEffect } from 'react';
 import appStyle from './styles/App.module.css'; // 외부 스타일시트를 모듈로 관리 (네임스페이스가 구분되어 클래스 이름 중복 방지)
 import AppHeader from './components/AppHeader';
 import AppBody from './components/AppBody';
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
 import { v4 } from 'uuid';
 
-function App() {
-  // 메모 데이터를 저장하는 state
-  // { uuid: 'uuid', bgColor: '#fff0a6', content: '메모 내용' }
-  const [ memos, setMemos ] = useState([
-    { uuid: 'test1', bgColor: '#fff0a6', content: 'test1' },
-    { uuid: 'test2', bgColor: '#fff0a6', content: 'test2' },
-    { uuid: 'test3', bgColor: '#fff0a6', content: 'test3' },
-  ]);
+// { uuid: 'uuid', bgColor: '#fff0a6', content: '메모 내용' }
+function reducer(currentState, action) {
+  if (currentState === undefined) { // 초기값
+    return {
+      inputValue: '',
+      memos: [
+        { uuid: 'test1', bgColor: '#fff0a6', content: 'test1' },
+        { uuid: 'test2', bgColor: '#fff0a6', content: 'test2' },
+        { uuid: 'test3', bgColor: '#fff0a6', content: 'test3' },
+      ]
+    };
+  }
+  const newState = {...currentState};
+  if (action.type === 'CHANGE_INPUT') {
+    newState.inputValue = action.inputValue;
+  } else if (action.type === 'ADD_MEMO') {
+    newState.memos = [...newState.memos, { uuid: v4(), bgColor: '#fff0a6', content: currentState.inputValue }];
+  } else if (action.type === 'DELETE_MEMO') {
+    newState.memos = newState.memos.filter(memo => memo.uuid !== action.uuid);
+  } else if (action.type === 'CHANGE_MEMO') {
+    newState.memos = newState.memos.map(memo => {
+      if (memo.uuid === action.uuid) {
+        return { ...memo, bgColor: action.bgColor, content: action.content };
+      } else {
+        return memo;
+      }
+    });
+  }
+  return newState;
+}
+const store = configureStore({
+  reducer: reducer,
+  devTools: process.env.NODE_ENV !== 'production', // production 환경에서는 Redux DevTools 사용하지 않도록 설정
+});
 
+function App() {
   // 모바일 해상도를 감지하는 state
   const [mobile, setMobile] = useState(false);
   // 리사이즈 이벤트를 감지하여 가로 길이에 따라 모바일 여부 결정
@@ -34,24 +63,7 @@ function App() {
       // 메모리 누수를 줄이기 위해 이벤트리스너 제거
       window.removeEventListener("resize", resizingHandler);
     };
-  }, []);
-  // 입력창에 입력된 값
-  const [inputValue, setInputValue] = useState('');
-  // 입력창에 입력된 값이 변경되면 state에 저장
-  const inputChange = (event) => {
-    setInputValue(event.target.value);
-  };
-  // 메모 추가 버튼 클릭 시
-  const addBtnClick = () => {
-    if (inputValue !== '') {
-      // 메모 데이터 추가
-      setMemos([...memos, { uuid: v4(), bgColor: '#fff0a6', content: inputValue }]);
-      // 입력창 초기화
-      setInputValue('');
-    } else {
-      alert('내용을 입력해주세요');
-    }
-  };
+  }, []);    
   // 레이아웃 변경 버튼 클릭 시
   const chgLayoutBtnClick = () => {
     alert('레이아웃 변경 버튼 클릭');
@@ -59,8 +71,10 @@ function App() {
 
   return (
     <div className={appStyle.App}>
-      <AppHeader isMobile={mobile} inputValue={inputValue} inputChange={inputChange} addBtnClick={addBtnClick} chgLayoutBtnClick={chgLayoutBtnClick} />
-      <AppBody isMobile={mobile} memos={memos} />
+      <Provider store={store}>
+        <AppHeader isMobile={mobile} chgLayoutBtnClick={chgLayoutBtnClick} />
+        <AppBody />
+      </Provider>
     </div>
   );
 }
