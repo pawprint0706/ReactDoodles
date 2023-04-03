@@ -6,19 +6,6 @@ import '/node_modules/react-resizable/css/styles.css';
 import { FiEdit3 } from 'react-icons/fi';
 import { FiTrash2 } from 'react-icons/fi';
 
-/*
-const memos = [
-  { i: '1', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '', content: '1 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다.' },
-  { i: '2', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#9b93c9', content: '2 메모 테스트 입니다.' },
-  { i: '3', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#2baf65', content: '3 메모 테스트 입니다.' },
-  { i: '4', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#f0c7f9', content: '4 메모 테스트 입니다.' },
-  { i: '5', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#93a04b', content: '5 메모 테스트 입니다.' },
-  { i: '6', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#d86c13', content: '6 메모 테스트 입니다.' },
-  { i: '7', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#84615e', content: '7 메모 테스트 입니다.' },
-  { i: '8', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#dde0db', content: '8 메모 테스트 입니다.' },
-];
-*/
-
 /* 다른 컴포넌트를 감싸는 래퍼 컴포넌트 */
 const WrapperScroll = styled.div`
   display: grid;
@@ -110,56 +97,11 @@ const CorkBoard = () => {
   const [gridState, setGridState] = useState({
     breakpoints: 'lg',
     layouts: {
-      lg: [
-        { i: '1', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '', content: '1 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다.' },
-        { i: '2', x: 1, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#9b93c9', content: '2 메모 테스트 입니다.' },
-        { i: '3', x: 2, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#2baf65', content: '3 메모 테스트 입니다.' },
-        { i: '4', x: 3, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#f0c7f9', content: '4 메모 테스트 입니다.' },
-        { i: '5', x: 4, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#93a04b', content: '5 메모 테스트 입니다.' },
-        { i: '6', x: 5, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#d86c13', content: '6 메모 테스트 입니다.' },
-        { i: '7', x: 6, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#84615e', content: '7 메모 테스트 입니다.' },
-        { i: '8', x: 7, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#dde0db', content: '8 메모 테스트 입니다.' },
-      ],
-      md: [
-        { i: '1', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '', content: '1 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다.' },
-        { i: '2', x: 1, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#9b93c9', content: '2 메모 테스트 입니다.' },
-        { i: '3', x: 2, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#2baf65', content: '3 메모 테스트 입니다.' },
-        { i: '4', x: 3, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#f0c7f9', content: '4 메모 테스트 입니다.' },
-        { i: '5', x: 4, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#93a04b', content: '5 메모 테스트 입니다.' },
-        { i: '6', x: 5, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#d86c13', content: '6 메모 테스트 입니다.' },
-        { i: '7', x: 0, y: 1, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#84615e', content: '7 메모 테스트 입니다.' },
-        { i: '8', x: 1, y: 1, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#dde0db', content: '8 메모 테스트 입니다.' },
-      ],
-      sm: [
-        { i: '1', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '', content: '1 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다.' },
-        { i: '2', x: 1, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#9b93c9', content: '2 메모 테스트 입니다.' },
-        { i: '3', x: 2, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#2baf65', content: '3 메모 테스트 입니다.' },
-        { i: '4', x: 3, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#f0c7f9', content: '4 메모 테스트 입니다.' },
-        { i: '5', x: 0, y: 1, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#93a04b', content: '5 메모 테스트 입니다.' },
-        { i: '6', x: 1, y: 1, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#d86c13', content: '6 메모 테스트 입니다.' },
-        { i: '7', x: 2, y: 1, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#84615e', content: '7 메모 테스트 입니다.' },
-        { i: '8', x: 3, y: 1, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#dde0db', content: '8 메모 테스트 입니다.' },
-      ],
-      xs: [
-        { i: '1', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '', content: '1 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다.' },
-        { i: '2', x: 1, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#9b93c9', content: '2 메모 테스트 입니다.' },
-        { i: '3', x: 0, y: 1, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#2baf65', content: '3 메모 테스트 입니다.' },
-        { i: '4', x: 1, y: 1, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#f0c7f9', content: '4 메모 테스트 입니다.' },
-        { i: '5', x: 0, y: 2, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#93a04b', content: '5 메모 테스트 입니다.' },
-        { i: '6', x: 1, y: 2, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#d86c13', content: '6 메모 테스트 입니다.' },
-        { i: '7', x: 0, y: 3, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#84615e', content: '7 메모 테스트 입니다.' },
-        { i: '8', x: 1, y: 3, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#dde0db', content: '8 메모 테스트 입니다.' },
-      ],
-      xxs: [
-        { i: '1', x: 0, y: 0, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '', content: '1 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다. 메모 테스트 입니다.' },
-        { i: '2', x: 0, y: 1, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#9b93c9', content: '2 메모 테스트 입니다.' },
-        { i: '3', x: 0, y: 2, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#2baf65', content: '3 메모 테스트 입니다.' },
-        { i: '4', x: 0, y: 3, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#f0c7f9', content: '4 메모 테스트 입니다.' },
-        { i: '5', x: 0, y: 4, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#93a04b', content: '5 메모 테스트 입니다.' },
-        { i: '6', x: 0, y: 5, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#d86c13', content: '6 메모 테스트 입니다.' },
-        { i: '7', x: 0, y: 6, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#84615e', content: '7 메모 테스트 입니다.' },
-        { i: '8', x: 0, y: 7, w: 1, h: 1, isDraggable: true, isResizable: true, bgColor: '#dde0db', content: '8 메모 테스트 입니다.' },
-      ]
+      lg: [],
+      md: [],
+      sm: [],
+      xs: [],
+      xxs: []
     },
   });
   // Grid Layout 변경 시 사용
@@ -178,13 +120,12 @@ const CorkBoard = () => {
   }
   // breakpoints는 원하는 해상도 width에서 21px씩 빼고 생각하면 된다. (좌우 여백 20px + 1px)
   // 윈도우의 크롬브라우저는 최소 폭이 500px 이다.
-  
-  // 1920px 해상도 기준으로 lg: 1419(1440px 3/4 너비), md: 939(960px 1/2 너비), sm: 479(480px 모바일)
+  // 1920px 해상도 기준으로 lg: 1419(1440px 3/4 너비), md: 938(960px 1/2 너비), sm: 699(720px), xs: 459(480px 모바일)
   return (
     <ResponsiveGridLayout
       className="layout"
       layouts={gridState.layouts}
-      breakpoints={{ lg: 1419, md: 939, sm: 479, xs: 200, xxs: 0 }}
+      breakpoints={{ lg: 1419, md: 938, sm: 699, xs: 459, xxs: 0 }}
       cols={{ lg: 8, md: 6, sm: 4, xs: 2, xxs: 1 }}
       onBreakpointChange={onBreakPointChange}
       onLayoutChange={onLayoutChange}

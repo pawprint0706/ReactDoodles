@@ -62,9 +62,15 @@ const HeaderInput = styled.input`
   font-family: 'Noto Sans KR', sans-serif;
   &:focus { outline: none; border-bottom: 1px solid #999999; }
 `;
-function MemoInput() {
+function MemoInput(props) {
+  function onKeyDown(event) {
+    if (event.key === 'Enter') {
+      props.addBtnClick();
+    }
+  }
+
   return (
-    <HeaderInput placeholder="내용을 입력해주세요"></HeaderInput>
+    <HeaderInput placeholder="내용을 입력해주세요" value={props.inputValue} onChange={props.onChange} onKeyDown={(event) => onKeyDown(event)}></HeaderInput>
   );
 }
 const HeaderButton = styled.button`
@@ -87,31 +93,31 @@ const HeaderButton = styled.button`
   font-size: 24px;
   color: #777777;
 `;
-function AddMemoButton() {
+function AddMemoButton(props) {
   return (
-    <HeaderButton title="메모 추가"><RiAddBoxLine /></HeaderButton>
+    <HeaderButton title="메모 추가" onClick={props.onClick}><RiAddBoxLine /></HeaderButton>
   );
 }
-function ChangeLayoutButton() {
+function ChangeLayoutButton(props) {
   return (
-    <HeaderButton title="레이아웃 변경"><RiLayout2Line /></HeaderButton>
+    <HeaderButton title="레이아웃 변경" onClick={props.onClick}><RiLayout2Line /></HeaderButton>
   );
 }
 function Header(props) {
   return (
-    <HeaderWrapper isMobile={props.isMobile}>
+    <HeaderWrapper isMobile={props.isMobile} inputValue={props.inputValue} inputChange={props.inputChange} addBtnClick={props.addBtnClick} chgLayoutBtnClick={props.chgLayoutBtnClick}>
       <Logo />
       {!props.isMobile && <Title>React Memo</Title>}
-      <MemoInput />
-      <AddMemoButton />
-      {!props.isMobile && <ChangeLayoutButton />}
+      <MemoInput inputValue={props.inputValue} onChange={props.inputChange} addBtnClick={props.addBtnClick} />
+      <AddMemoButton onClick={props.addBtnClick} />
+      {!props.isMobile && <ChangeLayoutButton onClick={props.chgLayoutBtnClick} />}
     </HeaderWrapper>
   );
 }
 
 function AppHeader(props) {
   return (
-    <Header isMobile={props.isMobile}/>
+    <Header isMobile={props.isMobile} inputValue={props.inputValue} inputChange={props.inputChange} addBtnClick={props.addBtnClick} chgLayoutBtnClick={props.chgLayoutBtnClick} />
   );
 }
 
