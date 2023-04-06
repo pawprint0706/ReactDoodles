@@ -63,13 +63,11 @@ const HeaderInput = styled.input`
   font-family: 'Noto Sans KR', sans-serif;
   &:focus { outline: none; border-bottom: 1px solid #999999; }
 `;
-function MemoInput() {
+// 메모 추가 커스텀 Hook
+function useAddMemo() {
   const dispatch = useDispatch();
   const inputValue = useSelector(state => state.inputValue);
-  function onChange(event) {
-    dispatch({ type: 'CHANGE_INPUT', inputValue: event.target.value });
-  }
-  function addBtnClick() {
+  const addMemo = () => {
     if (inputValue !== '') {
       // 메모 데이터 추가
       dispatch({ type: 'ADD_MEMO' });
@@ -78,15 +76,25 @@ function MemoInput() {
     } else {
       alert('내용을 입력해주세요');
     }
-  };
-  function onKeyDown(event) {
+  }
+  
+  return addMemo;
+};
+function MemoInput() {
+  const dispatch = useDispatch();
+  const inputValue = useSelector(state => state.inputValue);
+  const addMemo = useAddMemo();
+  function onChange(event) {
+    dispatch({ type: 'CHANGE_INPUT', inputValue: event.target.value });
+  }
+  function handleKeyDown(event) {
     if (event.key === 'Enter') {
-      addBtnClick();
+      addMemo();
     }
   }
 
   return (
-    <HeaderInput placeholder="내용을 입력해주세요" value={inputValue} onChange={(event) => onChange(event)} onKeyDown={(event) => onKeyDown(event)}></HeaderInput>
+    <HeaderInput placeholder="내용을 입력해주세요" value={inputValue} onChange={(event) => onChange(event)} onKeyDown={(event) => handleKeyDown(event)}></HeaderInput>
   );
 }
 const HeaderButton = styled.button`
@@ -110,21 +118,14 @@ const HeaderButton = styled.button`
   color: #777777;
 `;
 function AddMemoButton() {
-  const dispatch = useDispatch();
-  const inputValue = useSelector(state => state.inputValue);
-  function addBtnClick() {
-    if (inputValue !== '') {
-      // 메모 데이터 추가
-      dispatch({ type: 'ADD_MEMO' });
-      // 입력창 초기화
-      dispatch({ type: 'CHANGE_INPUT', inputValue: '' });
-    } else {
-      alert('내용을 입력해주세요');
-    }
-  };
+  const addMemo = useAddMemo();
+
+  function handleAddMemo() {
+    addMemo();
+  }
 
   return (
-    <HeaderButton title="메모 추가" onClick={addBtnClick}><RiAddBoxLine /></HeaderButton>
+    <HeaderButton title="메모 추가" onClick={handleAddMemo}><RiAddBoxLine /></HeaderButton>
   );
 }
 function ChangeLayoutButton(props) {
