@@ -1,6 +1,6 @@
 {
-  "short_name": "메모",
-  "name": "메모",
+  "short_name": "React Memo",
+  "name": "React Memo",
   "icons": [
     {
       "src": "favicon.ico",
@@ -23,8 +23,9 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "id": "reactmemo",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#FFF0A6",
   "background_color": "#ffffff"
 }
